@@ -11,10 +11,33 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
+import Swiper from 'swiper/swiper-bundle'
 import "../stylesheets/application"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+$(document).on('turbolinks:load', function() {
+  $(document).ready(function () {
+    $(".openbtn").click(function () { //ボタンがクリックされたら
+    	$(this).toggleClass('active'); //ボタン自身に activeクラスを付与し
+      $("#g-nav").toggleClass('panelactive'); //ナビゲーションにpanelactiveクラスを付与
+    });
 
+    $("#g-nav a").click(function () { //ナビゲーションのリンクがクリックされたら
+      $(".openbtn").removeClass('active'); //ボタンの activeクラスを除去し
+      $("#g-nav").removeClass('panelactive'); //ナビゲーションのpanelactiveクラスも除去
+    });
+
+    new Swiper('.swiper', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      speed: 1500,
+    });
+
+  });
+});
