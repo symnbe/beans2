@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Coffee Beans</h2>
+  <div class="row">
+    <div class="col-md-9 offset-md-3">
+      <%= @beans.each do |bean| %>
+      <div class="col-md-2">
+        <%= image_tag bean.get_bean_image %>
+        <%= bean.production_area %>
+        <%= bean.price %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
