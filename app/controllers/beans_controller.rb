@@ -5,8 +5,8 @@ class BeansController < ApplicationController
   end
 
   def create
-    bean = Bean.new(bean_params)
-    if bean.save
+    @bean = Bean.new(bean_params)
+    if @bean.save
       redirect_to beans_path
     else
       render :new
@@ -27,7 +27,7 @@ class BeansController < ApplicationController
   private
 
   def bean_params
-    params.require(:bean).permit(:bean_name, :degree_of_roasting, :production_area, :store_name, :bean_image, :opinion)
+    params.require(:bean).permit(:bean_name, :degree_of_roasting, :production_area, :store_name, :bean_image, :opinion).merge(user_id: current_user.id)
   end
 
 
