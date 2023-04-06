@@ -6,8 +6,11 @@ class BeansController < ApplicationController
 
   def create
     bean = Bean.new(bean_params)
-    bean.save
-    redirect_to beans
+    if bean.save
+      redirect_to beans_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -19,6 +22,12 @@ class BeansController < ApplicationController
   end
 
   def edit
+  end
+
+  private
+
+  def bean_params
+    params.require(:bean).permit(:bean_name, :degree_of_roasting, :production_area, :store_name, :bean_image, :opinion)
   end
 
 

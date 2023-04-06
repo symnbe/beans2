@@ -1,18 +1,15 @@
-<div class="container">
-  <div class="row">
-    <%= link_to "+", new_bean_path, class:"btn btn-outline-secondary ml-auto mt-5 mr-3" %>
+  <div class="row add-contents">
+    <%= link_to "+", new_bean_path, class:"btn btn-lg btn-outline-secondary ml-auto mt-5 mr-1" %>
   </div>
-</div>
+
 <div class="container">
   <h2>Coffee Beans</h2>
   <div class="row">
-    <%= @beans.each do |bean| %>
     <div class="col-md-4 offset-md-2">
-      <%= image_tag bean.get_bean_image %>
-    </div>
-    <div class="col-md-5 offset-md-1">
-      <%= bean.production_area %>
-      <%= bean.price %>
+      <% @beans.each do |bean| %>
+
+      <%= bean.store_name %>
+
     </div>
       <% end %>
   </div>
