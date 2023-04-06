@@ -4,11 +4,21 @@
     <div class="mx-auto d-flex justify-content-center">
       <%= form_with model:@bean, local:true do |f| %>
       <div class="form-group">
+        <%= f.label:bean_name %>
+        <%= f.text_area:bean_name, class:"autoforcus form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label:degree_of_roasting %>
+        <%= f.select :degree_of_roasting, Bean.degree_of_roastings_i18n.invert, class:"autoforcus form-control" %>
+        <%= f.label:production_area, class:"ml-3" %>
+        <%= f.select :production_area, Bean.production_areas_i18n.invert, class:"autoforcus form-control" %>
+      </div>
+      <div class="form-group">
         <%= f.label:store_name, class:"autoforcus" %>
         <%= f.text_field:store_name, class:"form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label:image %>
+        <%= f.label:bean_image %>
         <%= f.file_field:bean_image, class:"form-control-file" %>
       </div>
       <div class="form-group">
