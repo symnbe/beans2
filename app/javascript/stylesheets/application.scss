@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Raleway&family=Zen+Maru+Gothic&display=swap');
 @import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~swiper/swiper-bundle';
 
 body {
   font-family: 'Raleway', 'Zen Maru Gothic', sans-serif;
   line-height: 1.8; // 行間隔
   letter-spacing: .1rem; // 文字間隔
+  color: #212529;
 }
 
 /*========= ナビゲーションのためのCSS ===============*/
@@ -133,4 +135,8 @@ body {
 .add-contents{
   margin: 32px 0;
   max-width: 80%;
+}
+
+.card:hover{
+  background-color: #E2E5E5;
 }

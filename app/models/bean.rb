@@ -12,7 +12,7 @@ class Bean < ApplicationRecord
 
   def get_bean_image
     unless bean_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image_unsplash.jpg')
+      file_path = Rails.root.join('app/assets/images/no_image_bean_bunsplash.jpg')
       bean_image.attach(io: File.open(file_path), filename: 'no_image_unsplash.jpg', content_type: 'image/jpeg')
     end
     bean_image

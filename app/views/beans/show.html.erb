@@ -1,0 +1,35 @@
+<div class="container">
+    <h2 class="mt-5">About Bean</h2>
+    <hr>
+    <div class="row">
+        <!--投稿画像-->
+        <div class="col-12 col-md-8">
+            <%= image_tag @bean.get_bean_image, class: "img-fluid" %>
+            <!--投稿者本人の場合に編集・削除できるようにする-->
+            <% if @bean.user == current_user %>
+                <p><%= link_to "Edit", edit_bean_path, class: "btn btn-outline-secondary mt-4" %>
+                <%= link_to "Delete", bean_path(@bean), method: :delete, class: "btn btn-outline-secondary mt-4", "data-confirm" => "本当に削除しますか？" %>
+                </p><!--※fontawesomeでネジマークを使用したい ＋ 右寄せ-->
+            <% end %>
+        </div>
+        <!--投稿記事詳細-->
+        <div class="col-12 col-md-4">
+            <%= image_tag @bean.user.get_profile_image(100, 100), class: "w-auto" %>&emsp;<strong><%= @bean.user.name %></strong><!--※nameは後でlinkにしてprofileに飛ぶようにする-->
+            <hr>
+            <p><%= @bean.bean_name %></p>
+            <p><%= @bean.opinion %></p>
+            <p>#<%= @bean.production_area_i18n %></p>
+        </div>
+        <div class="card col-12 mt-5">
+          <div class="card-header">
+            STORE
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>店舗について他の記事を見ることができます。</p>
+              <footer class="blockquote-footer">Other posts about stores<cite title="About Stores">about stores</cite></footer>
+            </blockquote>
+          </div>
+        </div>
+    </div>
+</div>

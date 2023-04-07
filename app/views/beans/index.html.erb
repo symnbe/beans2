@@ -14,13 +14,13 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title m-0"><%= bean.bean_name %></h5>
+                <h5 class="card-title m-0"><%= link_to bean.bean_name, bean_path(bean.id) %></h5>
                 <small class="text-black-50 d-block">
                   <%= bean.store_name %>
                 </small>
                 <small class="text-black-50 d-block">
                   <%= bean.production_area %> / <%= bean.degree_of_roasting %><br>
-                  <%= link_to "@shota",beans_path %>
+                  <%= link_to "@shota",beans_path %><!--※後でprofileに飛べるようにする -->
                 </small>
                 <hr>
                 <%= simple_format(bean.opinion) %>

@@ -22,6 +22,19 @@ class BeansController < ApplicationController
   end
 
   def edit
+    @bean = Bean.find(params[:id])
+  end
+
+  def update
+    @bean = Bean.find(params[:id])
+    if @bean.update
+      redirect_to beans_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
   end
 
   private
