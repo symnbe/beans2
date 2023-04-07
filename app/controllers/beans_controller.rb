@@ -27,7 +27,7 @@ class BeansController < ApplicationController
 
   def update
     @bean = Bean.find(params[:id])
-    if @bean.update
+    if @bean.update(bean_params)
       redirect_to beans_path
     else
       render :edit
@@ -35,6 +35,12 @@ class BeansController < ApplicationController
   end
 
   def destroy
+    @bean = Bean.find(params[:id])
+    if @bean.destroy
+      redirect_to beans_path
+    else
+      render :show
+    end
   end
 
   private

@@ -1,36 +1,39 @@
-  <div class="row add-contents">
-    <%= link_to "+", new_bean_path, class:"btn btn-lg btn-outline-secondary ml-auto mt-5 mr-1" %>
-  </div>
-
+<div class="row add-contents">
+  <%= link_to "+", new_bean_path, class:"btn btn-lg btn-outline-secondary ml-auto mt-5 mr-1" %>
+</div>
 <div class="container">
   <h2>Coffee Beans</h2>
   <div class="row">
+    <!--下記indexのカード表記-->
     <% @beans.each do |bean| %>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 my-3">
         <div class="card shadow-sm">
           <div class="row no-gutters">
+            <!--カード内画像部-->
             <div class="col-md-4">
-              <%= image_tag bean.get_bean_image, class: 'img-fluid' %>
+              <figure>
+                <%= image_tag bean.get_bean_image, class: 'img-fluid' %>
+              </figure>
             </div>
+            <!--豆情報表示箇所-->
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title m-0"><%= link_to bean.bean_name, bean_path(bean.id) %></h5>
+                <h5 class="card-title m-0"><%= link_to bean.bean_name, bean_path(bean.id), class: "link-text" %></h5>
                 <small class="text-black-50 d-block">
                   <%= bean.store_name %>
                 </small>
                 <small class="text-black-50 d-block">
                   <%= bean.production_area %> / <%= bean.degree_of_roasting %><br>
-                  <%= link_to "@shota",beans_path %><!--※後でprofileに飛べるようにする -->
+                  <%= link_to "@shota",beans_path, class: "link-text" %><!--※後でprofileに飛べるようにする -->
                 </small>
                 <hr>
-                <%= simple_format(bean.opinion) %>
-                <% if bean.price.present? %>
-                  <div class="text-right">
-                    <small class="text-black-50">
-                      &yen; bean.price
-                    </small>
-                  </div>
-                <% end %>
+                <!--<% if bean.price.present? %>-->
+                <!--  <div class="text-right">-->
+                <!--    <small class="text-black-50">-->
+                <!--      &yen; bean.price-->
+                <!--    </small>-->
+                <!--  </div>-->
+                <!--<% end %>-->
               </div>
             </div>
           </div>

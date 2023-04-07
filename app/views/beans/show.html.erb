@@ -14,13 +14,19 @@
         </div>
         <!--投稿記事詳細-->
         <div class="col-12 col-md-4">
-            <%= image_tag @bean.user.get_profile_image(100, 100), class: "w-auto" %>&emsp;<strong><%= @bean.user.name %></strong><!--※nameは後でlinkにしてprofileに飛ぶようにする-->
+            <%= image_tag @bean.user.get_profile_image(60, 60), class: "w-auto" %>&emsp;<strong><%= @bean.user.name %></strong><!--※nameは後でlinkにしてprofileに飛ぶようにする-->
             <hr>
+            <span><strong>store</strong></span>
+            <p><%= @bean.store_name %></p><!--store's indexへリンクできるようにする-->
+            <span><strong>product</strong></span>
             <p><%= @bean.bean_name %></p>
-            <p><%= @bean.opinion %></p>
+            <span><strong>product area</strong></span>
             <p>#<%= @bean.production_area_i18n %></p>
+            <p><%= @bean.opinion %></p>
+
         </div>
-        <div class="card col-12 mt-5">
+        <!--Store’s indexへのリンクするためのカード-->
+        <div class="card col-12 my-5">
           <div class="card-header">
             STORE
           </div>
