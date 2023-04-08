@@ -20,7 +20,7 @@
               <div class="card-body">
                 <h5 class="card-title m-0"><%= link_to bean.bean_name, bean_path(bean.id), class: "link-text" %></h5>
                 <small class="text-black-50 d-block">
-                  <%= bean.store_name %>
+                  <%= bean.store.store_name %>
                 </small>
                 <small class="text-black-50 d-block">
                   <%= bean.production_area %> / <%= bean.degree_of_roasting %><br>

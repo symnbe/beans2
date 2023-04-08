@@ -1,0 +1,2 @@
+module ProductionAreasHelper
+end

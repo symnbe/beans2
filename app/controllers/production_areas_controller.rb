@@ -1,0 +1,2 @@
+class ProductionAreasController < ApplicationController
+end

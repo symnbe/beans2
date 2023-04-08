@@ -17,7 +17,7 @@
             <%= image_tag @bean.user.get_profile_image(60, 60), class: "w-auto" %>&emsp;<strong><%= @bean.user.name %></strong><!--※nameは後でlinkにしてprofileに飛ぶようにする-->
             <hr>
             <span><strong>store</strong></span>
-            <p><%= @bean.store_name %></p><!--store's indexへリンクできるようにする-->
+            <p><%= @bean.store.store_name %></p><!--store's indexへリンクできるようにする-->
             <span><strong>product</strong></span>
             <p><%= @bean.bean_name %></p>
             <span><strong>product area</strong></span>

@@ -3,19 +3,6 @@ ja:
   enums:
     # Beanモデル
     bean:
-    # 産地
-      production_area:
-        brazil: "ブラジル"
-        vietnam: "ベトナム"
-        columbia: "コロンビア"
-        indonesia: "インドネシア"
-        ethiopia: "エチオピア"
-        honduras: "ホンジュラス"
-        india: "インド"
-        peru: "ペルー"
-        guatemala: "グァテマラ"
-        uganda: "ウガンダ"
-
     # 豆の焙煎度合い
       degree_of_roasting:
         light_roast: "ライトロースト"
