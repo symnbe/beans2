@@ -6,13 +6,13 @@
   <div class="row">
     <!--下記indexのカード表記-->
     <% @beans.each do |bean| %>
-      <div class="col-12 col-md-6 my-3">
-        <div class="card shadow-sm">
+      <div class="col-12 col-md-6 my-3 d-flex">
+        <div class="card shadow-sm flex-grow-1">
           <div class="row no-gutters">
             <!--カード内画像部-->
             <div class="col-md-4">
               <figure>
-                <%= image_tag bean.get_bean_image, class: 'img-fluid' %>
+                <%= image_tag bean.get_bean_image, class: 'index-img-trimming img-fluid' %>
               </figure>
             </div>
             <!--豆情報表示箇所-->
@@ -27,13 +27,7 @@
                   <%= link_to "@shota",beans_path, class: "link-text" %><!--※後でprofileに飛べるようにする -->
                 </small>
                 <hr>
-                <!--<% if bean.price.present? %>-->
-                <!--  <div class="text-right">-->
-                <!--    <small class="text-black-50">-->
-                <!--      &yen; bean.price-->
-                <!--    </small>-->
-                <!--  </div>-->
-                <!--<% end %>-->
+                <%= bean.opinion.slice(0...15) %>  ...
               </div>
             </div>
           </div>

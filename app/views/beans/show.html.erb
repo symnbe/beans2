@@ -4,7 +4,7 @@
     <div class="row">
         <!--投稿画像-->
         <div class="col-12 col-md-8">
-            <%= image_tag @bean.get_bean_image, class: "img-fluid" %>
+            <%= image_tag @bean.get_bean_image, class: "show-img-trimming img-fluid" %>
             <!--投稿者本人の場合に編集・削除できるようにする-->
             <% if @bean.user == current_user %>
                 <p><%= link_to "Edit", edit_bean_path, class: "btn btn-outline-secondary mt-4" %>

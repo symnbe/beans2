@@ -4,7 +4,7 @@
     <ul>
         <% if user_signed_in? %>
           <li>
-            <a href="#">About</a>
+            <%= link_to "About", root_path %>
           </li>
           <li>
             <%= link_to Beans, beans_path %>
