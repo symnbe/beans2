@@ -8,17 +8,20 @@
 
 #Admin.create!(email: "admin@test.com", password: "password")
 
-areas = ["ブラジル",                                   
-         "ベトナム",                                   
-         "コロンビア",                                 
-         "インドネシア",                               
-         "エチオピア",                                 
-         "ホンジュラス",                               
+areas = ["ブラジル",
+         "ベトナム",
+         "コロンビア",
+         "インドネシア",
+         "エチオピア",
+         "ホンジュラス",
          "インド",
          "ペルー",
          "グァテマラ",
-         "ウガンダ"]
-         
+         "ウガンダ",
+         "ラテンアメリカ",
+         "マルチリージョン",
+         "アジア・太平洋"]
+
 areas.each do |area|
   ProductionArea.create!(area: area)
 end
