@@ -24,7 +24,6 @@
             <span><strong>product area</strong></span>
             <p>#<%= @bean.production_area.area %></p>
             <p><%= @bean.opinion %></p>
-
         </div>
         <!--Store’s indexへのリンクするためのカード-->
         <div class="card col-12 my-5">
@@ -33,7 +32,7 @@
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              <p>店舗について他の記事を見ることができます。</p>
+              <p><%= link_to "店舗について他の投稿を見る", store_path(@store.id), class: "link-text" %></p>
               <footer class="blockquote-footer">Other posts about stores<cite title="About Stores">about stores</cite></footer>
             </blockquote>
           </div>
