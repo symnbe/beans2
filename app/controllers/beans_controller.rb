@@ -35,7 +35,7 @@ class BeansController < ApplicationController
         longitude: store.longitude
       }.to_json
     end
-    @production_areas = ProductionArea.all      
+    @production_areas = ProductionArea.all
       render :new
     end
   end
@@ -50,6 +50,7 @@ class BeansController < ApplicationController
 
   def edit
     @bean = Bean.find(params[:id])
+
   end
 
   def update
@@ -75,7 +76,7 @@ class BeansController < ApplicationController
   def bean_params
     params.require(:bean).permit(:bean_name, :degree_of_roasting, :production_area_id, :store_id, :bean_image, :opinion)
   end
-  
+
   def store_params
     params.require(:bean).permit(:store_name, :website, :phone_number, :opening_hours, :closing_hours, :address)
   end

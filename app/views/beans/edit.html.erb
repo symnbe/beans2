@@ -7,20 +7,17 @@
         <%= f.label :bean_name %>
         <%= f.text_field :bean_name, class:"form-control" %>
       </div>
+
       <div class="form-group">
         <%= f.label :degree_of_roasting %>
         <%= f.select :degree_of_roasting, Bean.degree_of_roastings_i18n.invert, class:"form-control" %>
-        <%= f.label :production_area, class:"ml-3" %>
-        <%= f.select :production_area, Bean.production_areas_i18n.invert, class:"form-control" %>
       </div>
-      <div class="form-group">
-        <%= f.label :store_name %>
-        <%= f.text_field :store_name, class:"form-control" %>
-      </div>
+
       <div class="form-group">
         <%= f.label :bean_image %>
         <%= f.file_field :bean_image, class:"form-control-file" %>
       </div>
+
       <div class="form-group">
         <%= f.label :opinion %>
         <%= f.text_area :opinion, class:"form-control" %>

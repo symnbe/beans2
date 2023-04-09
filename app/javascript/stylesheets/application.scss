@@ -147,10 +147,16 @@ body {
   background-color: #E2E5E5;
 }
 
+.s-show-img-trimmimg:hover{
+  background-color: #24586B;
+}
+
+
 // aタブの下線を無くして、文字色も変わらないように設定
 .link-text{
   color:inherit;
   text-decoration: none;
+  border-bottom: 1px solid #212529;
 }
 
 .b-index-img-trimming{
@@ -160,13 +166,14 @@ body {
 }
 
 .b-show-img-trimming{
-  width: 100%;
+  width: 80%;
   height: 490px;
   object-fit: cover;
 }
 
-// .s-index-img-trimming{
-//   width: 100%;
-//   height: 140px;
-//   object-fit: cover;
-// }
+.s-show-img-trimmimg{
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+
+}

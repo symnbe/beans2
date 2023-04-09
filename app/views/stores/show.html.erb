@@ -1,2 +1,12 @@
-<h1>Stores#show</h1>
-<p>Find me in app/views/stores/show.html.erb</p>
+<div class="container">
+  <h2 class="my-5 mx-auto d-flex justify-content-center"><%= @store.store_name %></h2>
+  <div class="row">
+    <% @store.beans.each do |bean| %>
+      <div class="col-12 col-md-4 m-0 my-2">
+        <%= link_to bean_path(bean.id) do %>
+          <%= image_tag bean.get_bean_image, class: "s-show-img-trimmimg img-fluid" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
