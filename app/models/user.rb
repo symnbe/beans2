@@ -7,6 +7,8 @@ class User < ApplicationRecord
          has_one_attached :profile_image
 
          has_many :beans, dependent: :destroy
+         has_many :favorites, dependent: :destroy
+         
 
          validates:name, presence:true
 

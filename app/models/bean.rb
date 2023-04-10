@@ -5,6 +5,7 @@ class Bean < ApplicationRecord
   belongs_to :user
   belongs_to :store, optional: true
   belongs_to :production_area
+  has_many :favorites, dependent: :destroy
 
   validates :opinion, presence: true
 
@@ -17,6 +18,10 @@ class Bean < ApplicationRecord
     end
     # bean_image.variant(resize_to_limit:[width, height]).processed
       bean_image
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 end
