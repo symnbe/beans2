@@ -53,3 +53,21 @@
 <div class="my-5">
   <%= image_tag 'contents-visual-unsplash.jpg', class: 'mx-auto d-flex justify-content-center contents-img img-fluid' %>
 </div>
+
+
+
+
+<div class="container">
+  <h2 class="my-5 mx-auto d-flex justify-content-center">New Topic</h2>
+  <div class="row">
+    <% @beans.each do |bean| %>
+      <div class="col-12 col-md-3">
+        <%= link_to bean_path(bean.id) do %>
+          <%= image_tag bean.get_bean_image, class: "mx-auto d-flex justify-content-center contents-sm-img img-fluid" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

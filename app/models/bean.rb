@@ -6,6 +6,7 @@ class Bean < ApplicationRecord
   belongs_to :store, optional: true
   belongs_to :production_area
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :opinion, presence: true
 

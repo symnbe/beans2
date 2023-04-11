@@ -8,7 +8,8 @@ class User < ApplicationRecord
 
          has_many :beans, dependent: :destroy
          has_many :favorites, dependent: :destroy
-         
+         has_many :comments, dependent: :destroy
+
 
          validates:name, presence:true
 
@@ -19,7 +20,7 @@ class User < ApplicationRecord
     end
       profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def bean_count
     beans.count
   end

@@ -47,6 +47,7 @@ class BeansController < ApplicationController
   def show
     @bean = Bean.find(params[:id])
     @store = @bean.store
+    @comment = Comment.new
   end
 
   def edit
