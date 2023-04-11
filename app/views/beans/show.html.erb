@@ -1,20 +1,13 @@
 <div class="container">
-    <h2 class="my-5 pt-5">About Bean</h2>
+    <h2 class="my-5 ml-5">About Bean</h2>
     <hr>
     <div class="row">
         <!--投稿画像-->
-        <div class="col-12 col-md-8">
-            <%= image_tag @bean.get_bean_image, class: "b-show-img-trimming img-fluid" %>
-            <!--投稿者本人の場合に編集・削除できるようにする-->
-            <% if @bean.user == current_user %>
-                <p>
-                  <%= link_to "Edit", edit_bean_path, class: "btn btn-outline-secondary mt-4" %>
-                  <%= link_to "Delete", bean_path(@bean), method: :delete, class: "btn btn-outline-secondary mt-4", "data-confirm" => "本当に削除しますか？" %>
-                </p><!--※fontawesomeでネジマークを使用したい ＋ 右寄せ-->
-            <% end %>
+        <div class="col-12 col-md-8 mx-auto d-flex justify-content-center">
+            <%= image_tag @bean.get_bean_image, class: "b-show-img-trimming img-fluid" %><br>
         </div>
         <!--投稿記事詳細-->
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-4 my-3">
             <%= image_tag @bean.user.get_profile_image(60, 60), class: "w-auto" %>&emsp;<strong><%= @bean.user.name %></strong><!--※nameは後でlinkにしてprofileに飛ぶようにする-->
             <hr>
             <span><strong>store</strong></span>
@@ -24,6 +17,24 @@
             <span><strong>product area</strong></span>
             <p>#<%= @bean.production_area.area %></p>
             <p><%= @bean.opinion %></p>
+        </div>
+        <!--下記いいね機能-->
+        <div class="col-12 col-md-5 ml-auto mr-3 mt-3">
+          <% if @bean.favorited_by?(current_user) %>
+            <p>
+              <%= link_to bean_favorites_path(@bean.id), method: :delete do %>
+                <i class="fas fa-heart" aria-hidden="true" style="color: red; font-size: 32px;"></i>
+              <% end %>
+            </p>
+          <% else %>
+              <%= link_to bean_favorites_path(@bean.id), method: :post do %>
+                <i class="fas fa-heart" aria-hidden="true" style="font-size: 32px; margin-left:"></i>
+              <% end %>
+          <% end %>
+        </div>
+        <!--下記コメント欄-->
+        <div>
+          
         </div>
         <!--Store’s indexへのリンクするためのカード-->
         <div class="card col-12 my-5">
