@@ -60,3 +60,5 @@ gem 'devise'
 gem 'enum_help'
 
 gem 'faker'
+
+gem 'jquery-rails'

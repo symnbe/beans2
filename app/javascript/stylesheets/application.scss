@@ -151,6 +151,20 @@ body {
   background-color: #24586B;
 }
 
+.new-topic{
+  margin: 100px 0;
+  // background-color: #E2E5E5;
+}
+.start{
+  padding: 75px;
+  font-size: 32px;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid #212529;
+  // background-color: #D9D4B4;
+}
+
+
 
 // aタブの下線を無くして、文字色も変わらないように設定
 .link-text{
@@ -190,7 +204,7 @@ body {
 
 .contents-sm-img{
   width: 100%;
-  height: 40px;
+  height: 400px;
   object-fit: cover;
 }
 
@@ -280,4 +294,8 @@ body.appear #container{
 	100% {
 	opacity: 1;
 }
+}
+
+.td-center{
+  vertical-align: middle !important;
 }

@@ -51,23 +51,24 @@
 </div>
 
 <div class="my-5">
-  <%= image_tag 'contents-visual-unsplash.jpg', class: 'mx-auto d-flex justify-content-center contents-img img-fluid' %>
+  <%= image_tag 'contents-visual-unsplash.jpg', class: 'mx-auto mb-5 d-flex justify-content-center contents-img img-fluid' %>
 </div>
 
 
 
 
 <div class="container">
-  <h2 class="my-5 mx-auto d-flex justify-content-center">New Topic</h2>
+  <h2 class="mx-auto d-flex justify-content-center new-topic">New Topic</h2>
   <div class="row">
     <% @beans.each do |bean| %>
       <div class="col-12 col-md-3">
         <%= link_to bean_path(bean.id) do %>
-          <%= image_tag bean.get_bean_image, class: "mx-auto d-flex justify-content-center contents-sm-img img-fluid" %>
+          <%= image_tag bean.get_bean_image, class: "mx-auto my-5 d-flex justify-content-center contents-sm-img img-fluid" %>
         <% end %>
       </div>
     <% end %>
   </div>
+  <p class="mx-auto d-flex justify-content-center"><%= link_to "Come on, join us ！", new_user_registration_path, class: "start"  %></p>
 </div>
 
 

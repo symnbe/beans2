@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
 
-  get 'relationships/followings'
-  get 'relationships/followers'
+  
   devise_for :users
   root to: 'homes#top'
   resources:users, only:[:new, :index, :show, :edit, :update] do

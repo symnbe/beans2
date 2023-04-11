@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row border border-5">
-    <div class="col-12 my-5 user-show-page">
+    <div class="col-12 col-sm-12 my-5 text-center">
       <%= image_tag @user.get_profile_image(120, 120)  %>
         <strong><%= @user.name %></strong>&emsp;
         投稿<%= @user.bean_count %>件 &emsp;
@@ -11,16 +11,10 @@
         <% end %>
       </span>
     </div>
-      <p style="margin-left: 11rem;">
-        <span class=" mr-3 btn btn-outline-primary">
-          フォロー
-           <%= link_to @user.followings.count, user_followings_path(@user) %>
-        </span>
-        <span class="btn btn-outline-primary">
-          フォロワー
-          <%= link_to @user.followers.count, user_followers_path(@user) %>
-        </span>
-      </p>
+      <div class="col-12 text-center">
+        <%= link_to "フォロー" + @user.followings.count.to_s, user_followings_path(@user), class: "btn btn-outline-primary mr-3" %>
+        <%= link_to "フォロワー" + @user.followers.count.to_s, user_followers_path(@user), class: "btn btn-outline-primary" %>
+      </div>
       <p class="col-12 my-5">
         <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block"  do %>
           <i class="fas fa-user-cog"></i>
