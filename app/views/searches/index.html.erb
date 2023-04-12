@@ -1,0 +1,16 @@
+<h1>Search results for '<%= params[:query] %>'</h1>
+
+<h2>Users</h2>
+<% @users.each do |user| %>
+  <p><%= link_to user.name, user_path(user) %></p>
+<% end %>
+
+<h2>Beans</h2>
+<% @beans.each do |bean| %>
+  <p><%= link_to bean.name, bean_path(bean) %></p>
+<% end %>
+
+<h2>Stores</h2>
+<% @stores.each do |store| %>
+  <p><%= link_to store.name, store_path(store) %></p>
+<% end %>

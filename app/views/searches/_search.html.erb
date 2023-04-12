@@ -1,0 +1,46 @@
+
+
+<%= form_tag(searches_path, method: :get) do %>
+  <%= label_tag :user_query, 'Search for a user:' %>
+  <%= text_field_tag :user_query, params[:user_query] %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<% if users.any? %>
+  <h2>Users</h2>
+  <ul>
+    <% users.each do |user| %>
+      <li><%= link_to user.name, user_path(user) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_tag(searches_path, method: :get) do %>
+  <%= label_tag :bean_query, 'Search for a bean:' %>
+  <%= text_field_tag :bean_query, params[:bean_query] %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<% if beans.any? %>
+  <h2>Beans</h2>
+  <ul>
+    <% beans.each do |bean| %>
+      <li><%= link_to bean.name, bean_path(bean) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_tag(search_pathes, method: :get) do %>
+  <%= label_tag :store_query, 'Search for a store:' %>
+  <%= text_field_tag :store_query, params[:store_query] %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<% if stores.any? %>
+  <h2>Stores</h2>
+  <ul>
+    <% stores.each do |store| %>
+      <li><%= link_to store.name, store_path(store) %></li>
+    <% end %>
+  </ul>
+<% end %>

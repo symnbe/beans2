@@ -41,7 +41,10 @@ class BeansController < ApplicationController
   end
 
   def index
-    @beans = Bean.all
+    @all_beans = Bean.all
+    @users = User.where("name LIKE ?", "%#{params[:user_query]}%")
+    @beans = Bean.where("name LIKE ?", "%#{params[:bean_query]}%")
+    @stores = Store.where("name LIKE ?", "%#{params[:store_query]}%")
   end
 
   def show

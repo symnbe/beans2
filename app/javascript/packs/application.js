@@ -62,3 +62,10 @@ ActiveStorage.start()
   });
 
 // });
+
+$(document).on('load', function() {
+  $("#search-button").click(function(event) {
+    event.preventDefault();
+    $(".search-bar").toggleClass("hidden");
+  });
+});
