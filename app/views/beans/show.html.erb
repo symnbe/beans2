@@ -1,10 +1,19 @@
 <div class="container">
-    <h2 class="my-5 ml-5">About Bean</h2>
+  <h2 class="my-5">About Bean</h2>
+  <div class="row">
+    <div class="col-12 col-md-5 ml-auto mr-3 mt-3">
+      <% if @bean.user == current_user %>
+        <%= link_to edit_bean_path(@bean), class: "btn btn-outline-secondary mt-4 mb-3" do %>
+          <i class="fas fa-cog"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
     <hr>
     <div class="row">
         <!--投稿画像-->
         <div class="col-12 col-md-8 mx-auto d-flex justify-content-center">
-            <%= image_tag @bean.get_bean_image, class: "b-show-img-trimming img-fluid" %><br>
+            <%= image_tag @bean.get_bean_image, class: "b-show-img-trimming img-fluid" %>
         </div>
         <!--投稿記事詳細-->
         <div class="col-12 col-md-4 my-3">
@@ -20,13 +29,6 @@
         </div>
         <!--下記いいね機能-->
         <div class="col-12 col-md-5 ml-auto mr-3 mt-3">
-          <% if @bean.user == current_user %>
-            <%= link_to edit_bean_path(@bean), class: "mt-4" do %>
-<i class="fas fa-cog"></i>
-<% end %>
-            <%= link_to "Delete", bean_path(@bean), method: :delete, class: "mt-4", "data-confirm" => "本当に削除しますか？" %>
-                <!--※fontawesomeでネジマークを使用したい ＋ 右寄せ-->
-            <% end %>
           <% if @bean.favorited_by?(current_user) %>
               <%= link_to bean_favorites_path(@bean.id), method: :delete do %>
                 <i class="fas fa-heart" aria-hidden="true" style="color: red; font-size: 32px;"></i>
@@ -43,8 +45,8 @@
             <p>
               <%= comment.user.name %>&emsp;<%= comment.comment %>
               <% if comment.user == current_user %>
-                <%= link_to bean_comment_path(comment.bean, comment), method: :delete do%>
-                  <i class="fal fa-window-close"></i>
+                <%= link_to bean_comment_path(comment.bean, comment), method: :delete, class: "link-text" do%>
+                  <i class="fas fa-trash-alt"></i>
                 <% end %>
               <% end %>
              </p>
