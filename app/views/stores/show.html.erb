@@ -1,5 +1,16 @@
+<div class="row add-contents">
+  <%= link_to edit_store_path(@store), class:"btn btn-lg btn-outline-secondary ml-auto mt-5 mr-1" do %>
+    <i class="fas fa-cog"></i>
+  <% end %>
+</div>
+
 <div class="container">
-  <h2 class="my-5 mx-auto d-flex justify-content-center"><%= @store.store_name %></h2>
+  <h2 class="mt-5 text-center"><%= @store.store_name %></h2>
+  <div class="col-12 mt-5 mb-5 text-center">
+    <strong>住所</strong>:&ensp;<%= @store.address %><br>
+    <strong>TEL</strong>:&ensp;<%= @store.phone_number %><br>
+    <strong>営業時間</strong>:&ensp;<%= @store.opening_hours %> ~ <%= @store.closing_hours %>
+  </div>
   <div class="row">
     <% @store.beans.each do |bean| %>
       <div class="col-12 col-md-4 m-0 my-2">

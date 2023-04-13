@@ -62,7 +62,7 @@ ActiveStorage.start()
   });
 
 // });
-
+// 検索機能時のアニメーション
 $(document).on('load', function() {
   $("#search-button").click(function(event) {
     event.preventDefault();
