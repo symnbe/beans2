@@ -141,6 +141,19 @@ body {
 .add-contents{
   margin: 32px 0;
   max-width: 80%;
+  height: 40px;
+}
+
+.search-bar{
+  display: inline-block;
+}
+
+.search-bar label{
+  margin-bottom: 0;
+}
+
+.add-contents>a {
+  padding: 0.5rem 1.25rem;
 }
 
 .card:hover{
