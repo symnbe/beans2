@@ -1,17 +1,27 @@
 <!--検索バーで検索した後の検索結果-->
-<h1>Search results for '<%= params[:query] %>'</h1>
+<h1>Search results for '<%= params[:word] %>'</h1>
 
-<h2>Users</h2>
-<% @users.each do |user| %>
-  <p><%= link_to user.name, user_path(user) %></p>
+<% if @users.present? %>
+  <h2>Users</h2>
+  <% @users.each do |user| %>
+    <p><%= link_to user.name, user_path(user) %></p>
+  <% end %>
 <% end %>
 
-<h2>Beans</h2>
-<% @beans.each do |bean| %>
-  <p><%= link_to bean.name, bean_path(bean) %></p>
+<% if @beans.present? %>
+  <h2>Beans</h2>
+  <% @beans.each do |bean| %>
+    <p><%= link_to bean.bean_name, bean_path(bean) %></p>
+  <% end %>
 <% end %>
 
-<h2>Stores</h2>
-<% @stores.each do |store| %>
-  <p><%= link_to store.name, store_path(store) %></p>
+<% if @stores.present? %>
+  <h2>Stores</h2>
+  <% @stores.each do |store| %>
+    <p><%= link_to store.store_name, store_path(store) %></p>
+  <% end %>
+<% end %>
+
+<% if @users.blank? && @beans.blank? && @stores.blank? %>
+  <h3>Nothing...</h3>
 <% end %>

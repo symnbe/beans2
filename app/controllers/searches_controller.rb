@@ -1,9 +1,10 @@
 class SearchesController < ApplicationController
   def index
-   
-    @users = User.where("name LIKE ?", "%#{params[:user_query]}%")
-    @beans = Bean.where("name LIKE ?", "%#{params[:bean_query]}%")
-    @stores = Store.where("name LIKE ?", "%#{params[:store_query]}%")
+    if params[:word].present?
+      @users = User.where("name LIKE ?", "%#{params[:word]}%")
+      @beans = Bean.where("bean_name LIKE ?", "%#{params[:word]}%")
+      @stores = Store.where("store_name LIKE ?", "%#{params[:word]}%")
+    end
   end
-    
+
 end

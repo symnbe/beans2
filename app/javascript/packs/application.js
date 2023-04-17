@@ -31,6 +31,12 @@ ActiveStorage.start()
       $("#g-nav").removeClass('panelactive'); //ナビゲーションのpanelactiveクラスも除去
     });
 
+    $('#search-button').click(function (event) {
+      console.log('CLICK!');
+      $(".search-bar").toggleClass("d-none");
+      event.preventDefault();
+    });
+
     new Swiper('.swiper', {
       loop: true,
       autoplay: {
@@ -63,9 +69,9 @@ ActiveStorage.start()
 
 // });
 // 検索機能時のアニメーション
-$(document).on('load', function() {
-  $("#search-button").click(function(event) {
-    event.preventDefault();
-    $(".search-bar").toggleClass("hidden");
-  });
-});
+  // $(document).on('load', function() {
+  //   $("#search-button").click(function(event) {
+  //     $(".search-bar").toggleClass("hidden");
+  //     event.preventDefault();
+  //   });
+// });

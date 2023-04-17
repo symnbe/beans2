@@ -23,7 +23,7 @@ areas = ["ブラジル",
          "アジア・太平洋"]
 
 areas.each do |area|
-  ProductionArea.create!(area: area)
+  ProductionArea.find_or_create_by(area: area)
 end
 
 # 50.times do
