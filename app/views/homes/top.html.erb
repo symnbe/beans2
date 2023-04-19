@@ -22,6 +22,21 @@
   </div>
 </div>
 
+<% flash.each do |key, value| %>
+  <% if key == "alert" %>
+    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+      <%= value %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% elsif key == "notice" %>
+    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+      <%= value %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+<% end %>
+
+<!--ログイン・サインアップ・ゲストログインする際のリンク↓-->
 <% if !current_user %>
   <div class="mt-5 mb-5 text-center">
     <%= link_to "Log in", new_user_session_path, class:"link-text" %>

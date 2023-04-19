@@ -1,4 +1,6 @@
 class BeansController < ApplicationController
+  before_action :require_admin, only: [:publish]
+
 
   def new
     @bean = Bean.new
@@ -72,8 +74,18 @@ class BeansController < ApplicationController
       render :show
     end
   end
+  
+  def publish
+    @bean = Bean.find(params[:id])
+    @bean.update(published: false)
+    redirect_to bean_path(@bean), notice: "Content is now unpublished"
+  end
 
   private
+  
+  def require_admin
+    redirect_to root_path, alert: "Access denied" unless current_user.admin?
+  end
 
   def bean_params
     params.require(:bean).permit(:bean_name, :degree_of_roasting, :production_area_id, :store_id, :bean_image, :opinion)
