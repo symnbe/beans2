@@ -1,4 +1,15 @@
-<div class="container">
+<div class="row add-contents">
+<%= link_to "+", new_bean_path, class:"btn btn-lg btn-outline-secondary ml-auto mt-5 mb-5 mr-1" %>
+<span class="search-bar-container btn btn-lg btn-outline-light border border-secondary mt-5 mb-5 ml-3">
+  <a href="#" id="search-button"><i class="fa fa-search"></i></a>
+  <div class="search-bar d-none">
+    <%= render partial: 'searches/search', locals: { users: @users, beans: @beans, stores: @stores } %>
+  </div>
+</span>
+</div>
+
+
+<div class="container mt-5">
   <h2 class="mt-5 mb-4 mx-auto d-flex justify-content-center">Users</h2>
   <div class="row">
     <div class="col-10 mx-auto d-flex justify-content-center">

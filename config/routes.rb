@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
 
 
-  get 'searches/index'
+ 
   devise_for :users
   root to: 'homes#top'
+  # ゲストログイン機能↓
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
   resources:users, only:[:new, :index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'

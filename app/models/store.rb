@@ -1,6 +1,8 @@
 class Store < ApplicationRecord
 
   has_many :beans, dependent: :destroy
+  
+  # validates:store_name, presence:true
 
 
   # アソシエーションに関して外部キーの取得をする場合のwhereの使用方法
