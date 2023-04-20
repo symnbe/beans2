@@ -32,10 +32,10 @@
               <td class="td-center"><%= link_to "Show", user_path(user.id), class: "link-text" %></td>
               <td class="td-center"><%= link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% if current_user.admin? %>
-                <% if bean.published? %>
-                  <td><%= link_to "Unpublish", bean_content_path(content), method: :put %></td>
+                <% if user.released? %>
+                  <td class="td-center"><%= link_to '非公開にする', nonrelease_user_path(user.id), method: :patch %></td>
                 <% else %>
-                  <td><%= link_to "Publish", bean_content_path(content), method: :put %></td>
+                  <td class="td-center"><%= link_to '公開する', release_user_path(user.id), method: :patch %></td>
                 <% end %>
               <% end %>
             </tr>

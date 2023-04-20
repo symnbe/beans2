@@ -1,5 +1,5 @@
 class BeansController < ApplicationController
-  before_action :require_admin, only: [:publish]
+  before_action :require_admin, only: [:unpublish]
 
 
   def new
@@ -74,17 +74,13 @@ class BeansController < ApplicationController
       render :show
     end
   end
-  
-  def publish
-    @bean = Bean.find(params[:id])
-    @bean.update(published: false)
-    redirect_to bean_path(@bean), notice: "Content is now unpublished"
-  end
 
   private
-  
+
   def require_admin
-    redirect_to root_path, alert: "Access denied" unless current_user.admin?
+    unless current_user && current_user.admin?
+      redirect_to root_path, alert: "You do not have permission to access this page."
+    end
   end
 
   def bean_params

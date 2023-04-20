@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
 
          validates:name, presence:true
-
+# 以下active storageで使用するメソッドを記載
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image_profile.jpg')
@@ -24,11 +24,11 @@ class User < ApplicationRecord
     end
       profile_image.variant(resize_to_limit: [width, height]).processed
   end
-
+# 以下投稿数をカウントするメソッドを記載
   def bean_count
     beans.count
   end
-
+# 以下フォロー機能で使用するメソッドを記載
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -40,5 +40,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-
+  # 以下アカウントの公開非公開設定を行う際に使用するenumを記載
+  enum status:{nonreleased: 0, released: 1}
+  
 end

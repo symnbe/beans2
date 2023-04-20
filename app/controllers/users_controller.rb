@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
-   before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :check_admin, only: [:admin, :destroy]
-
+  before_action :require_admin
 
   def index
     if current_user.admin?
-      @users = User.all
+      @users = User.released
     else
-      @users = User.where(admin: false)
+      @users = User.released.where.not(id: current_user.id)
     end
   end
 
@@ -29,22 +29,35 @@ class UsersController < ApplicationController
     end
   end
 
-  def admin
-    @users = User.all
-  end
-
   def destroy
     @user = User.find(params[:id])
     @user.destroy
     redirect_to users_path, notice: "User was successfully deleted."
+  end
+  # 管理者ページアクション
+  def admin
+      @users = User.all
+  end
 
+  def release
+    @user = User.find(params[:id])
+    @user.released! unless @user.released?
+    redirect_to user_admin_path, notice: "このアカウントは公開状態です！"
+  end
+
+  def nonrelease
+    @user = User.find(params[:id])
+    @user.nonreleased! unless @user.nonreleased?
+    redirect_to user_admin_path, notice: "このアカウントは非公開状態です。"
   end
 
   private
-
-
   def check_admin
     redirect_to root_path, alert: "警告！！先ほどのページへのアクセスを禁止しています！！！（You are not authorized to access this page.）" unless current_user.admin?
+  end
+
+  def require_admin
+    redirect_to root_path, alert: "この操作は管理者のみが許可されています。" unless current_user.admin?
   end
 
   def user_params
