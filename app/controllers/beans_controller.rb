@@ -43,7 +43,7 @@ class BeansController < ApplicationController
   end
 
   def index
-    @all_beans = Bean.all
+    @all_beans = Bean.all.includes(:user)
   end
 
   def show

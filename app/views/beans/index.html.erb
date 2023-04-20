@@ -32,7 +32,7 @@
                 </small>
                 <small class="text-black-50 d-block">
                   <%= bean.production_area.area %> / <%= bean.degree_of_roasting %><br>
-                  <%= link_to "@shota",beans_path, class: "link-text" %><!--※後でprofileに飛べるようにする -->
+                  <%= link_to "@#{bean.user.name}", user_path(bean.user), class: "link-text" %>
                   <% if bean.favorited_by?(current_user) %>
                     <%= link_to bean_favorites_path(bean.id), method: :delete do %>
                       <i class="fas fa-heart" aria-hidden="true" style="color: red;font-size: 1rem;"></i>
