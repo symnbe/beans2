@@ -18,8 +18,12 @@
       <%= @user.introduce %>
     </div>
       <div class="col-12 text-center mt-5 mb-5">
-        <%= link_to "フォロー" + @user.followings.count.to_s, user_followings_path(@user), class: "btn btn-outline-primary mr-3" %>
-        <%= link_to "フォロワー" + @user.followers.count.to_s, user_followers_path(@user), class: "btn btn-outline-primary" %>
+        <% if @user.released? %>
+          <%= link_to "フォロー" + @user.followings.released.count.to_s, user_followings_path(@user), class: "btn btn-outline-primary mr-3" %>
+          <%= link_to "フォロワー" + @user.followers.released.count.to_s, user_followers_path(@user), class: "btn btn-outline-primary" %>
+        <% else %>
+          <span class="text-muted">フォロー<%= @user.followings.released.count %> フォロワー<%= @user.followers.released.count %></span>
+        <% end %>
       </div>
 
     <!--下記ページ下部投稿内容-->
