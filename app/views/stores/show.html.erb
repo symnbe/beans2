@@ -7,6 +7,25 @@
     </div>
   </span>
 </div>
+<!--以下map機能の追加に伴う記載-->
+<div class="map">
+  <div id="map">
+  </div>
+</div>
+
+<div type="text/javascript">
+  <script>
+    function initMap(){
+      let map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: <%= @store.latitude %>, lng: <%= @store.longitude %> },
+      zoom: 15
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+
+　　　　<!--map の記載はここまで-->
+
 
 <div class="row add-contents">
   <%= link_to edit_store_path(@store), class:"text-secondary ml-auto mt-5 mr-1" do %>

@@ -1,5 +1,16 @@
+<div class="row add-contents">
+  <%= link_to "+", new_bean_path, class:"btn btn-lg btn-outline-secondary ml-auto mt-5 mb-5 mr-1" %>
+  <span class="search-bar-container btn btn-lg btn-outline-light border border-secondary mt-5 mb-5 ml-3">
+    <a href="#" id="search-button"><i class="fa fa-search"></i></a>
+    <div class="search-bar d-none">
+      <%= render partial: 'searches/search', locals: { users: @users, beans: @beans, stores: @stores } %>
+    </div>
+  </span>
+</div>
+
+
 <div class="container">
-  <div class="row border border-5">
+  <div class="row">
     <div class="col-12 mt-5 text-center">
       <!--下記ページ上部プロフィール詳細-->
       <%= image_tag @user.get_profile_image(120, 120)  %>
@@ -17,7 +28,7 @@
     <div class="col-12 text-center mt-5">
       <%= @user.introduce %>
     </div>
-      <div class="col-12 text-center mt-5 mb-5">
+      <div class="col-12 text-center mt-2 mb-5">
         <% if @user.released? %>
           <%= link_to "フォロー" + @user.followings.released.count.to_s, user_followings_path(@user), class: "btn btn-outline-primary mr-3" %>
           <%= link_to "フォロワー" + @user.followers.released.count.to_s, user_followers_path(@user), class: "btn btn-outline-primary" %>

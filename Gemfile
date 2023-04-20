@@ -63,6 +63,10 @@ gem 'faker'
 
 gem 'jquery-rails'
 
+gem 'gmaps4rails'
+gem 'geocoder'
+
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
@@ -71,3 +75,4 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
