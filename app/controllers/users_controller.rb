@@ -38,13 +38,13 @@ class UsersController < ApplicationController
   def admin
       @users = User.all
   end
-
+  # 公開する場合のアクション
   def release
     @user = User.find(params[:id])
     @user.released! unless @user.released?
     redirect_to user_admin_path, notice: "このアカウントは公開状態です！"
   end
-
+  # 非公開する場合のアクション
   def nonrelease
     @user = User.find(params[:id])
     @user.nonreleased! unless @user.nonreleased?
@@ -58,6 +58,10 @@ class UsersController < ApplicationController
 
   def require_admin
     redirect_to root_path, alert: "この操作は管理者のみが許可されています。" unless current_user.admin?
+  end
+  
+  def is_matching_login_user
+    
   end
 
   def user_params

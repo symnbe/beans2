@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   resources:beans, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+    member do
+        patch 'release'
+        patch 'nonrelease'
+      end
   end
   get 'searches' => 'searches#index'
   get 'user/admin' => 'users#admin'

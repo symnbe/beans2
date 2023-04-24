@@ -1,4 +1,6 @@
 class StoresController < ApplicationController
+  before_action :authenticate_user!, except: [:top, :index]
+  before_action :require_admin, only: [:unpublish]
 
   def index
     @stores = Store.all
@@ -6,6 +8,12 @@ class StoresController < ApplicationController
 
   def show
     @store = Store.find(params[:id])
+
+  # Google Mapを表示するためのJavaScriptを生成
+    @map_options = {
+      latitude: @store.latitude,
+      longitude: @store.longitude
+    }.to_json
   end
 
   def edit

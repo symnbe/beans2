@@ -1,8 +1,14 @@
 class Store < ApplicationRecord
 
   has_many :beans, dependent: :destroy
-  
-  # validates:store_name, presence:true
+
+  # map 機能　住所から緯度と軽度を取得
+
+  geocoded_by :address, latitude: :latitude, longitude: :longitude
+  after_validation :geocode, :if => :address_changed?
+
+
+
 
 
   # アソシエーションに関して外部キーの取得をする場合のwhereの使用方法

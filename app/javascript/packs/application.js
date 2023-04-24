@@ -14,6 +14,9 @@ import "bootstrap";
 import '@fortawesome/fontawesome-free/js/all'
 import Swiper from 'swiper/swiper-bundle'
 import "../stylesheets/application"
+// import GMaps from 'gmaps/gmaps.js';
+
+
 
 Rails.start()
 // Turbolinks.start()
@@ -67,9 +70,3 @@ ActiveStorage.start()
 
   });
 
-//   function initMap(){
-//     let map = new google.maps.Map(document.getElementById('map'), {
-//     center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
-//     zoom: 15
-//     });
-// }

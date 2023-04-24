@@ -26,10 +26,10 @@
           <% end %>
         <% else %>
           <li>
-            <a href="#">About <span class="sr-only">(current)</span></a>
+            <%= link_to "About", root_path %>
           </li>
           <li>
-            <%= link_to Beans, beans_path %>
+            <%= link_to "Beans", beans_path %>
           </li>
           <li>
             <%= link_to "Stores", stores_path %>

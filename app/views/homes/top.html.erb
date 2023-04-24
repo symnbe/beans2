@@ -36,7 +36,7 @@
   <% end %>
 <% end %>
 
-<!--ログイン・サインアップ・ゲストログインする際のリンク(ログインしていない場合表示するようにif文で設定)↓-->
+<!--ログイン・サインアップ・ゲストログイン-->
 <% if !current_user %>
   <div class="mt-5 mb-5 text-center">
     <%= link_to "Log in", new_user_session_path, class:"link-text" %>
@@ -64,6 +64,7 @@
   <%= image_tag 'contents-visual-unsplash.jpg', class: 'mx-auto mb-5 d-flex justify-content-center contents-img img-fluid' %>
 </div>
 
+<!--最新投稿記事を表示-->
 <div class="container">
   <h2 class="mx-auto d-flex justify-content-center new-topic">New Topic</h2>
   <div class="row">

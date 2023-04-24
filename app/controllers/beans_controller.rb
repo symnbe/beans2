@@ -1,4 +1,5 @@
 class BeansController < ApplicationController
+  before_action :authenticate_user!, except: [:top, :index]
   before_action :require_admin, only: [:unpublish]
 
 
@@ -43,7 +44,11 @@ class BeansController < ApplicationController
   end
 
   def index
+    if current_user.admin?
     @all_beans = Bean.all.includes(:user)
+  else
+    @all_beans = Bean.where(released: true).or(Bean.where(user_id: current_user.id)).includes(:user)
+  end
   end
 
   def show
@@ -73,6 +78,18 @@ class BeansController < ApplicationController
     else
       render :show
     end
+  end
+
+  def release
+    @bean = Bean.find(params[:id])
+    @bean.released! unless @bean.released?
+    redirect_to beans_path
+  end
+
+  def nonrelease
+    @bean = Bean.find(params[:id])
+    @bean.nonreleased! unless @bean.nonreleased?
+    redirect_to beans_path
   end
 
   private

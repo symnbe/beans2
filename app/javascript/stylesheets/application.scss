@@ -160,6 +160,10 @@ body {
   background-color: #E2E5E5;
 }
 
+.admin .card.unreleased:hover {
+  background-color: #F0CACB;
+}
+
 .s-show-img-trimmimg:hover{
   background-color: #24586B;
 }
@@ -223,8 +227,8 @@ body {
 // ========== mapの表示のCSS =============================
 
 #map {
+  width: 100;
   height: 300px;
-  width: 400px;
 }
 
 /*========= ローディング画面のためのCSS ===============*/

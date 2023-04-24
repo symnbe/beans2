@@ -1,6 +1,6 @@
 <div class="row add-contents">
-  <%= link_to "+", new_bean_path, class:"btn btn-lg btn-outline-secondary ml-auto mt-5 mb-5 mr-1" %>
-  <span class="search-bar-container btn btn-lg btn-outline-light border border-secondary mt-5 mb-5 ml-3">
+  <%= link_to "+", new_bean_path, class:"btn btn-lg btn-outline-secondary ml-auto mb-5 mr-1" %>
+  <span class="search-bar-container btn btn-lg btn-outline-light border border-secondary mb-5 ml-3">
     <a href="#" id="search-button"><i class="fa fa-search"></i></a>
     <div class="search-bar d-none">
       <%= render partial: 'searches/search', locals: { users: @users, beans: @beans, stores: @stores } %>
@@ -8,24 +8,9 @@
   </span>
 </div>
 <!--以下map機能の追加に伴う記載-->
-<div class="map">
-  <div id="map">
-  </div>
+<div class="col-12 mt-5">
+  <div id="map"></div>
 </div>
-
-<div type="text/javascript">
-  <script>
-    function initMap(){
-      let map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: <%= @store.latitude %>, lng: <%= @store.longitude %> },
-      zoom: 15
-      });
-    }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
-
-　　　　<!--map の記載はここまで-->
-
 
 <div class="row add-contents">
   <%= link_to edit_store_path(@store), class:"text-secondary ml-auto mt-5 mr-1" do %>
@@ -50,3 +35,42 @@
     <% end %>
   </div>
 </div>
+
+<script>
+
+function initMap() {
+  let lat = <%=@store.latitude == nil ? "null" : @store.latitude %>;
+  let lng = <%=@store.longitude == nil ? "null" : @store.longitude %>;
+  if (lat == null || lng == null) {
+    return;
+  }
+  var mapOptions = {
+    zoom: 15,
+    center: new google.maps.LatLng(lat, lng)
+  };
+
+  var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(lat, lng),
+    map: map,
+    draggable: false, //true
+    icon: {
+      fillColor: "#ff0000",
+    },
+    label: {
+      text: '<% @store.store_name %>',
+      color: '#FFFFFF',
+      fontSize: '16px'
+    }
+
+  });
+
+}
+
+function setLatLng(marker) {
+  $('input#post_latitude').val(marker.getPosition().lat());
+  $('input#post_longitude').val(marker.getPosition().lng());
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
