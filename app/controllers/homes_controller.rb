@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  
+
 
 
   # ゲストログインのためのメソッド
@@ -19,6 +19,9 @@ class HomesController < ApplicationController
   end
 
   def top
-    @beans = Bean.order(created_at: :desc).limit(4)
+    # new topicで公開設定されている新規投稿4件を表示する
+   @beans = Bean.where(publish_status: "released")
+               .order(created_at: :desc)
+               .limit(4)
   end
 end

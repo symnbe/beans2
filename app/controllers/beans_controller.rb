@@ -45,10 +45,10 @@ class BeansController < ApplicationController
 
   def index
     if current_user.admin?
-    @all_beans = Bean.all.includes(:user)
-  else
-    @all_beans = Bean.where(released: true).or(Bean.where(user_id: current_user.id)).includes(:user)
-  end
+      @all_beans = Bean.all.includes(:user)
+    else
+      @all_beans = Bean.where(released: true).or(Bean.where(user_id: current_user.id)).includes(:user)
+    end
   end
 
   def show

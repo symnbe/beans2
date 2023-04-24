@@ -28,9 +28,8 @@ class Bean < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-
-  def release
-    release
+  def published?
+    self.released?
   end
 
 end
