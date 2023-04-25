@@ -29,12 +29,21 @@ class User < ApplicationRecord
     beans.count
   end
 # 以下フォロー機能で使用するメソッドを記載
-  def follow(user_id)
-    relationships.create(followed_id: user_id)
+
+  def followable_by?(user)
+    self != user && released?
+  end
+  
+  def followed_by?(user)
+    user.following?(self) && released?
+  end
+  
+  def follow(user)
+    relationships.find_or_create_by(followed_id: user.id)
   end
 
-  def unfollowed(user_id)
-    relationships.find_by(followed_id: user_id).destroy
+  def unfollow(user)
+    relationships.find_by(followed_id: user.id)&.destroy
   end
 
   def following?(user)

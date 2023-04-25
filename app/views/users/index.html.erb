@@ -29,10 +29,12 @@
             <td class="td-center"><%= user.name %></td>
             <td class="td-center"><%= link_to "Show", user_path(user.id), class: "link-text" %></td>
             <td>
-              <% if current_user.following?(user) %>
-                <td class="td-center"><%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-outline-secondary" %></td>
-              <% else %>
-                <td class="td-center"><%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-outline-primary" %></td>
+              <% if current_user.released? %>
+                <% if current_user.following?(user) %>
+                  <td class="td-center"><%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-outline-secondary" %></td>
+                <% else %>
+                  <td class="td-center"><%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-outline-primary" %></td>
+                <% end %>
               <% end %>
             </td>
           </tr>

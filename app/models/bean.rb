@@ -1,5 +1,7 @@
 class Bean < ApplicationRecord
 
+  scope :public_data, -> { where( publish_status: :released ) }
+  scope :public_data_includes_user_publish, -> { public_data.includes(:user).where( user: { status: :released } ) }
   has_one_attached :bean_image
 
   belongs_to :user

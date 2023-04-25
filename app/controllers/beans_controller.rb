@@ -47,7 +47,7 @@ class BeansController < ApplicationController
     if current_user.admin?
       @all_beans = Bean.all.includes(:user)
     else
-      @all_beans = Bean.where(publish_status: :released).includes(:user)
+      @all_beans = Bean.public_data_includes_user_publish
     end
   end
 

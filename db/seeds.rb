@@ -20,7 +20,12 @@ areas = ["ブラジル",
          "ウガンダ",
          "ラテンアメリカ",
          "マルチリージョン",
-         "アジア・太平洋"]
+         "アジア・太平洋",
+         "ジャマイカ",
+         "エルサルバドル",
+         "コスタリカ",
+         "ケニア",
+         "ジャマイカ"]
 
 areas.each do |area|
   ProductionArea.find_or_create_by(area: area)

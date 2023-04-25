@@ -16,7 +16,7 @@
     <!--下記indexのカード表記-->
     <% @all_beans.each do |bean| %>
       <div class="col-12 col-md-6 my-3 d-flex">
-        <div class="card <%= bean.released? ? "released" : "nonreleased" %> shadow-sm flex-grow-1">
+        <div class="card <%= bean.released? && bean.user.released? ? "released" : "nonreleased" %> shadow-sm flex-grow-1">
           <div class="row no-gutters">
             <!--カード内画像部-->
             <div class="col-md-4">
@@ -36,11 +36,11 @@
                   <%= link_to "@#{bean.user.name}", user_path(bean.user), class: "link-text" %>
                   <% if current_user %>
                     <% if bean.favorited_by?(current_user) %>
-                      <%= link_to bean_favorites_path(bean.id), method: :delete do %>
+                      <%= link_to bean_favorites_path(bean), method: :delete do %>
                         <i class="fas fa-heart" aria-hidden="true" style="color: red;font-size: 1rem;"></i>
                       <% end %>
                     <% else %>
-                      <%= link_to bean_favorites_path(bean.id), method: :post do %>
+                      <%= link_to bean_favorites_path(bean), method: :post do %>
                         <i class="fas fa-heart" aria-hidden="true" style="font-size: 1rem;"></i>
                       <% end %>
                     <% end %>
@@ -56,3 +56,5 @@
     <% end %>
   </div>
 </div>
+
+
