@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
+    @followed_by_current_user = current_user.following?(@user)
   end
 
   def edit

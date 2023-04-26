@@ -44,7 +44,7 @@ class BeansController < ApplicationController
   end
 
   def index
-    if current_user.admin?
+    if current_user && current_user.admin?
       @all_beans = Bean.all.includes(:user)
     else
       @all_beans = Bean.public_data_includes_user_publish
