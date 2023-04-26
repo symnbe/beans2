@@ -22,7 +22,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image_profile.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'no_image_profile.jpg', content_type: 'image/jpeg')
     end
-      profile_image.variant(resize_to_limit: [width, height]).processed
+      profile_image.variant(resize_to_fill: [width, height]).processed
   end
 # 以下投稿数をカウントするメソッドを記載
   def bean_count
@@ -33,11 +33,11 @@ class User < ApplicationRecord
   def followable_by?(user)
     self != user && released?
   end
-  
+
   def followed_by?(user)
     user.following?(self) && released?
   end
-  
+
   def follow(user)
     relationships.find_or_create_by(followed_id: user.id)
   end
@@ -51,5 +51,5 @@ class User < ApplicationRecord
   end
   # 以下アカウントの公開非公開設定を行う際に使用するenumを記載
   enum status:{nonreleased: 0, released: 1}
-  
+
 end
