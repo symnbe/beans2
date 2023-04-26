@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-12 mt-5 text-center">
       <!--下記ページ上部プロフィール詳細-->
-      <%= image_tag @user.get_profile_image(120, 120)  %>
+      <%= image_tag @user.get_profile_image(120, 120), class: "rounded" %>&emsp;
         <strong><%= @user.name %></strong>&emsp;
         投稿<%= @user.bean_count %>件 &emsp;
         <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary"  do %>
