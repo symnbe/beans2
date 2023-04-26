@@ -61,7 +61,7 @@ gem 'enum_help'
 
 gem 'faker'
 
-gem 'jquery-rails'
+
 
 gem 'gmaps4rails'
 gem 'geocoder'
