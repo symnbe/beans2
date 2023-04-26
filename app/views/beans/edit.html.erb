@@ -39,7 +39,7 @@
   </div>
 
   <div class="col-12 ml-auto">
-    <% if current_user.admin? %>
+    <% if current_user || current_user.admin? %>
       <% if @bean.released? %>
         <td class="td-center"><%= link_to '非公開にする', nonrelease_bean_path(@bean.id), method: :patch %></td>
       <% else %>
