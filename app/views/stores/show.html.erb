@@ -8,9 +8,12 @@
   </span>
 </div>
 <!--以下map機能の追加に伴う記載-->
-<div class="col-12 mt-5">
-  <div id="map"></div>
-</div>
+
+<% if @store.latitude %>
+  <div class="col-12 mt-5">
+    <div id="map"></div>
+  </div>
+<% end %>
 
 <div class="row add-contents">
   <%= link_to edit_store_path(@store), class:"text-secondary ml-auto mt-5 mr-1" do %>
@@ -39,8 +42,8 @@
 <script>
 
 function initMap() {
-  let lat = <%=@store.latitude == nil ? "null" : @store.latitude %>;
-  let lng = <%=@store.longitude == nil ? "null" : @store.longitude %>;
+  let lat = <%= @store.latitude == nil ? "null" : @store.latitude %>;
+  let lng = <%= @store.longitude == nil ? "null" : @store.longitude %>;
   if (lat == null || lng == null) {
     return;
   }
