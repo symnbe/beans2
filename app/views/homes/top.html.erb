@@ -45,7 +45,7 @@
   </div>
 <% else %>
   <div class="mt-5 mb-5 text-center">
-    <%= link_to "Log out(ログ アウト)", destroy_user_session_path, class: "link-text" %><br>
+    <%= link_to "Log out(ログ アウト)", destroy_user_session_path, class: "link-text", method: :delete %><br>
     <small>※使用後 Log out をお願いいたします！ ※</small>
   </div>
 <% end %>
