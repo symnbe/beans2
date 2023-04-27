@@ -43,6 +43,11 @@
     <%= link_to "ゲストログイン（閲覧用）", homes_guest_sign_in_path, method: :post, class: "mx-3 link-text" %>
     <%= link_to "Sign up", new_user_registration_path, class: "link-text" %>
   </div>
+<% else %>
+  <div class="mt-5 mb-5 text-center">
+    <%= link_to "Log out(ログ アウト)", destroy_user_session_path, class: "link-text" %><br>
+    <small>※使用後 Log out をお願いいたします！ ※</small>
+  </div>
 <% end %>
 
 <div class="container">
