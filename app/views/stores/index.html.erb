@@ -1,9 +1,7 @@
 <%= render 'layouts/logout' %>
 
 <% if current_user %>
-  <div class="row add-contents">
-    <%= link_to "+", new_bean_path, class:"btn btn-lg btn-outline-secondary ml-auto mt-5 mr-1" %>
-  </div>
+    <%= render "layouts/composite" %>
 <% end %>
 
 <div class="container">

@@ -8,7 +8,7 @@ class SearchesController < ApplicationController
       end
       @users = @users.where("name LIKE ?", "%#{params[:word]}%")
       @beans = Bean.where("bean_name LIKE ?", "%#{params[:word]}%")
-      @stores = Store.where("store_name LIKE ?", "%#{params[:word]}%")
+      @stores = Store.where("store_name LIKE ? OR address LIKE ?", "%#{params[:word]}%", "%#{params[:word]}%")
     end
   end
 

@@ -18,7 +18,7 @@
 <% if @stores.present? %>
   <h2>Stores</h2>
   <% @stores.each do |store| %>
-    <p><%= link_to store.store_name, store_path(store) %></p>
+    <p><%= link_to store.store_name + ' ' + store.address, store_path(store) %></p>
   <% end %>
 <% end %>
 
