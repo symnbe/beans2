@@ -1,0 +1,6 @@
+<% if current_user %>
+  <div class="col-10 mt-5 mb-5 text-right">
+    <%= link_to "Log out(ログ アウト)", destroy_user_session_path, class: "link-text", method: :delete %><br>
+    <small>※使用後 Log out をお願いいたします！ ※</small>
+  </div>
+<% end %>
