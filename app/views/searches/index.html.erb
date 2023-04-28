@@ -1,27 +1,31 @@
 <!--検索バーで検索した後の検索結果-->
-<h1>Search results for '<%= params[:word] %>'</h1>
+<%= render 'layouts/logout' %>
+
+<%= render 'layouts/composite' %>
+
+<h1 class="text-center">Search results for '<%= params[:word] %>'</h1>
 
 <% if @users.present? %>
-  <h2>Users</h2>
+  <h2 class="text-center mt-5 mb-5">Users</h2>
   <% @users.each do |user| %>
-    <p><%= link_to user.name, user_path(user) %></p>
+    <p class="text-center"><%= link_to user.name, user_path(user), class: "link-text" %></p>
   <% end %>
 <% end %>
 
 <% if @beans.present? %>
-  <h2>Beans</h2>
+  <h2 class="text-center mt-5 mb-5">Beans</h2>
   <% @beans.each do |bean| %>
-    <p><%= link_to bean.bean_name, bean_path(bean) %></p>
+    <p class="text-center"><%= link_to bean.bean_name, bean_path(bean), class: "link-text" %></p>
   <% end %>
 <% end %>
 
 <% if @stores.present? %>
-  <h2>Stores</h2>
+  <h2 class="text-center mt-5 mb-5">Stores</h2>
   <% @stores.each do |store| %>
-    <p><%= link_to store.store_name + ' ' + store.address, store_path(store) %></p>
+    <p class="text-center"><%= link_to store.store_name + ' ' + store.address, store_path(store), class: "link-text" %></p>
   <% end %>
 <% end %>
 
 <% if @users.blank? && @beans.blank? && @stores.blank? %>
-  <h3>Nothing...</h3>
+  <h3 class="text-center mt-5 mb-5">Nothing...</h3>
 <% end %>
