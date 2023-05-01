@@ -1,5 +1,9 @@
 class FavoritesController < ApplicationController
 
+  def show
+  @favorited_users = User.includes(:favorites).where(favorites: { bean_id: params[:id] })
+  end
+
   def create
     bean = Bean.find(params[:bean_id])
     favorite = current_user.favorites.new(bean_id: bean.id)

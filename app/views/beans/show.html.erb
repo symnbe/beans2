@@ -32,16 +32,20 @@
             <p><%= @bean.opinion %></p>
         </div>
         <!--下記いいね機能-->
-        <div class="col-12 col-md-5 ml-auto mr-3 mt-3">
+        <div class="col-12 col-md-5 ml-4 mt-3">
           <% if @bean.favorited_by?(current_user) %>
-              <%= link_to bean_favorites_path(@bean.id), method: :delete do %>
-                <i class="fas fa-heart" aria-hidden="true" style="color: red; font-size: 32px;"></i>
+              <%= link_to bean_favorite_path(@bean), method: :delete do %>
+                <i class="fas fa-heart" aria-hidden="true" style="color: red; font-size: 32px;"></i>&emsp;
               <% end %>
           <% else %>
-              <%= link_to bean_favorites_path(@bean.id), method: :post do %>
-                <i class="fas fa-heart" aria-hidden="true" style="font-size: 32px; margin-left:"></i>
+              <%= link_to bean_favorites_path(@bean), method: :post do %>
+                <i class="fas fa-heart" aria-hidden="true" style="font-size: 32px; margin-left:"></i>&emsp;
               <% end %>
           <% end %>
+          <% @favorites.each do |user| %>
+            <%= link_to user.name, user_path(user), class: "link-text" %>
+          <% end %>
+          <%= link_to "....", bean_favorite_path(@bean), class: "text" %>
         </div>
         <!--下記コメント欄-->
         <div class="col-12">

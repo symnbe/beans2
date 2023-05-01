@@ -57,6 +57,8 @@ class BeansController < ApplicationController
     @bean = Bean.find(params[:id])
     @store = @bean.store
     @comment = Comment.new
+    @favorites = @bean.favorites.includes(:user).where(users: {status: "released"}).order(created_at: :desc).limit(4).map(&:user)
+
   end
 
   def edit

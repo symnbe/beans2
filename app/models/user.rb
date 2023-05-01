@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
 
          validates:name, presence:true
+         
 # 以下active storageで使用するメソッドを記載
   def get_profile_image(width, height)
     unless profile_image.attached?

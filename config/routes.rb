@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources:stores, only:[:index, :show, :edit, :update]
 
   resources:beans, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
-    resource :favorites, only: [:create, :destroy]
+    resources :favorites, only: [:show, :create, :destroy]
     resources :comments, only: [:create, :destroy]
     member do
         patch 'release'
