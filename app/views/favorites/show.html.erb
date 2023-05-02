@@ -5,6 +5,13 @@
 <div class="container">
     <h2 class="text-center mt-5 mb-5">Liked</h2>
     <div class="row">
-        
+        <table class="table col-6 mx-auto">
+            <tr>
+                <% @favorited_users.each do |user| %>
+                    <td><%= link_to user.name, user_path(user), class: "link-text" %></td>
+                    
+                <% end %>
+            </tr>
+        </table>
     </div>
 </div>

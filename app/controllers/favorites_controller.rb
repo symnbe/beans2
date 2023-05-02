@@ -1,7 +1,9 @@
 class FavoritesController < ApplicationController
 
   def show
-  @favorited_users = User.includes(:favorites).where(favorites: { bean_id: params[:id] })
+  @favorited_users = User.includes(:favorites).where(favorites: { bean_id: params[:id] }).where(status: "released")
+  @favorited_users = User.includes(:favorites).where(favorites: { bean_id: params[:id] }).where(status: "released")
+
   end
 
   def create
