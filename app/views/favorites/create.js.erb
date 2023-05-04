@@ -1,2 +1,0 @@
-$('#favorite_btn_<%= params[:action] == 'index' ? bean.id : @bean.id %>')
-  .html("<%= render partial: 'favorites/favorite', locals: { bean: params[:action] == 'index' ? bean : @bean, size: params[:action] == 'index' ? '1rem' : '32px' } %>");

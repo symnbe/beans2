@@ -14,7 +14,6 @@ import "bootstrap";
 import '@fortawesome/fontawesome-free/js/all'
 import Swiper from 'swiper/swiper-bundle'
 import "../stylesheets/application"
-// import GMaps from 'gmaps/gmaps.js';
 
 
 
