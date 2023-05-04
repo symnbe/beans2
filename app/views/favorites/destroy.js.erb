@@ -1,0 +1,5 @@
+<% if params[:action] == 'index' %>
+  $('#favorite_btn_<%= bean.id %>').html("<%= j render partial: 'favorites/favorite', locals: { bean: bean, size: '1rem' } %>");
+<% else %>
+  $('#favorite_btn_<%= @bean.id %>').html("<%= j render partial: 'favorites/favorite', locals: { bean: @bean, size: '32px' } %>");
+<% end %>
