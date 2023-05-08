@@ -5,7 +5,6 @@ class CreateFavorites < ActiveRecord::Migration[6.1]
       t.integer :bean_id, foreign_key: true
 
       t.timestamps
-      t.index [:user_id, :bean_id], unique: true
     end
   end
 end
