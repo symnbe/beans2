@@ -33,15 +33,9 @@
         </div>
         <!--下記いいね機能-->
         <div class="col-12 col-md-5 ml-4 mt-3">
-          <% if @bean.favorited_by?(current_user) %>
-              <%= link_to bean_favorites_path(@bean.id), method: :delete do %>
-                <i class="fas fa-heart" aria-hidden="true" style="color: red; font-size: 32px;"></i>
-              <% end %>
-          <% else %>
-              <%= link_to bean_favorites_path(@bean.id), method: :post do %>
-                <i class="fas fa-heart" aria-hidden="true" style="font-size: 32px; margin-left:"></i>
-              <% end %>
-          <% end %>
+          <span id="favorite_btn_<%= @bean.id %>">
+            <%= render 'favorites/favorite', bean: @bean %>
+          </span>
           <!--いいねした人の表示-->
           <% @favorites.each do |user| %>
             <%= link_to user.name, user_path(user), class: "link-text" %>&nbsp;
