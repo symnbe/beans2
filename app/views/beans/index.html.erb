@@ -31,9 +31,11 @@
                   <%= link_to "@#{bean.user.name}", user_path(bean.user), class: "link-text" %>
 
                   <% if current_user %>
-                     <div id="favorite_<%= bean.id %>">
-                       <%= render partial: "favorites/index_favorite", locals: { bean: bean } %>
-                     </div>
+                    <% if bean.favorited_by?(current_user) %>
+                      <%= link_to bean_path(bean) do %>
+                        <i class="fas fa-heart" aria-hidden="true" style="color: red;font-size: 1rem;"></i>
+                      <% end %>
+                    <% end %>
                   <% end %>
                 </small>
                 <hr>
