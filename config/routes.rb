@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         patch 'nonrelease'
       end
       member do
-        get :likes
+        get :favorites
       end
       
 
