@@ -36,11 +36,6 @@
           <span id="favorite_btn_<%= @bean.id %>">
             <%= render 'favorites/favorite', bean: @bean %>
           </span>
-          <!--いいねした人の表示-->
-          <% @favorites.each do |user| %>
-            <%= link_to user.name, user_path(user), class: "link-text" %>&nbsp;
-          <% end %>
-          <%= link_to "....", bean_path(@bean), class: "text" %>
         </div>
         <!--下記コメント欄-->
         <div class="col-12">

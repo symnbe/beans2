@@ -1,0 +1,54 @@
+<%= render 'layouts/logout' %>
+
+<%= render 'layouts/composite' %>
+
+<div class="container">
+  <h2 class="text-center mt-5 mb-5">Favorited</h2>
+  <div class="row">
+    <% if @favorite_beans  %>
+      <% @favorite_beans.each do |bean| %>
+        <div class="col-12 col-md-6 my-3 d-flex">
+          <div class="card shadow-sm flex-grow-1">
+            <div class="row no-gutters">
+              <!--カード内画像部-->
+              <div class="col-12 col-md-6">
+                <figure>
+                  <%= image_tag bean.get_bean_image, class: 'b-index-img-trimming img-fluid' %>
+                </figure>
+              </div>
+              <!--豆情報表示箇所-->
+              <div class="col-12 col-md-6">
+                <div class="card-body">
+                  <h5 class="card-title m-0"><%= link_to bean.bean_name, bean_path(bean.id), class: "link-text" %></h5>
+                  <small class="text-black-50 d-block">
+                    <%= bean.store.store_name %>
+                  </small>
+                  <small class="text-black-50 d-block">
+                    <%= bean.production_area.area %> / <%= bean.degree_of_roasting %><br>
+                    <%= link_to "@#{bean.user.name}", user_path(bean.user), class: "link-text" %>
+  
+                    <% if current_user %>
+                      <% if bean.favorited_by?(current_user) %>
+                        <%= link_to bean_path(bean) do %>
+                          <i class="fas fa-heart" aria-hidden="true" style="color: red;font-size: 1rem;"></i>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </small>
+                  <hr>
+                  <%= bean.opinion.slice(0...15) %>  ...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-12 mx-auto">
+        <h4 class="text-center mt-5 mb-5">Nothing...</h4>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
+         

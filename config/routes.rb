@@ -13,6 +13,10 @@ Rails.application.routes.draw do
         patch 'release'
         patch 'nonrelease'
       end
+      member do
+        get :likes
+      end
+      
 
   end
 

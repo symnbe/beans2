@@ -51,6 +51,13 @@ class UsersController < ApplicationController
     redirect_to user_admin_path, notice: "このアカウントは非公開状態です。"
   end
 
+  def likes
+    @user = User.find(params[:id])
+    favorites = Favorite.joins(:user, :bean).where(user: {id: @user.id, status: "released"}).order(created_at: :desc).pluck(:bean_id)
+    @favorite_beans = Bean.find(favorites)
+  end
+
+
   private
   def check_admin
     redirect_to root_path, alert: "警告！！先ほどのページへのアクセスを禁止しています！！！（You are not authorized to access this page.）" unless current_user.admin?
@@ -58,10 +65,6 @@ class UsersController < ApplicationController
 
   def require_admin
     redirect_to root_path, alert: "この操作は管理者のみが許可されています。" unless current_user.admin?
-  end
-  
-  def is_matching_login_user
-    
   end
 
   def user_params

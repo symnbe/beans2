@@ -14,13 +14,13 @@
         <div class="card <%= bean.released? && bean.user.released? ? "released" : "nonreleased" %> shadow-sm flex-grow-1">
           <div class="row no-gutters">
             <!--カード内画像部-->
-            <div class="col-md-4">
+            <div class="col-12 col-md-6">
               <figure>
                 <%= image_tag bean.get_bean_image, class: 'b-index-img-trimming img-fluid' %>
               </figure>
             </div>
             <!--豆情報表示箇所-->
-            <div class="col-md-8">
+            <div class=" col-12 col-md-6">
               <div class="card-body">
                 <h5 class="card-title m-0"><%= link_to bean.bean_name, bean_path(bean.id), class: "link-text" %></h5>
                 <small class="text-black-50 d-block">
